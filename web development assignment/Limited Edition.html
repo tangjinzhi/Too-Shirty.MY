@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Too-shirty</title>
+    <link rel="stylesheet" href="Too-Shirty.css">
+</head>
+<body>
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="slideshow-container">
+            <div class="slide fade">
+                <img src="gojo violin.jpg" alt="Slide 1">
+            </div>
+            <div class="slide fade">
+                <img src="inumaki.jpeg" alt="Slide 2">
+            </div>
+            <div class="slide fade">
+                <img src="slide3.jpg" alt="Slide 3">
+            </div>
+        </div>
+    </div>
+    
+    <!-- Main Content -->
+    <div id="wrapper">
+        <header>
+            <a href="index.html">
+                <h1><img src="Logo.jpg" alt="Company Logo" height="100px" width="120px" align="left">Too-Shirty</h1>
+            </a>
+        </header>
+        <nav>
+            <a href="index.html" class="animated-link">Home</a>
+            <a href="Men.html" class="animated-link">Men</a>
+            <a href="Women.html" class="animated-link">Women</a>
+            <a href="Children.html" class="animated-link">Children</a>
+            <a href="Limited Edition.html" class="animated-link">Limited Edition</a>
+        </nav>
+        <main>
+            <div id="background-video">
+                <video autoplay muted playsinline id="intro-video">
+                    <source src="jjkopening.mp4.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                  </video>
+            </div>
+
+            <audio id="audioPlayer" autoplay>
+                <source src="jjk music.mp3" type="audio/mp3">
+                Your browser does not support the audio element.
+            </audio>
+            <button class="play-button" onclick="togglePlay()"><img src="sukuna.gif" alt="sukuna" width="400px" height="200px"></button><--Click Me
+        
+            
+            <h2>Limited releases are here!</h2>
+            <p>Get them while you can!</p>
+            <p>(Available on 1st AUG 2024-14th AUG 2024)</p>
+            <h2>Limited Edition T-shirts</h2>
+            
+            <section class="product-list">
+                <div class="product" data-product-id="21">
+                    <div class="product-image">
+                        <img src="jujutsu kaisen.jpg" alt="Product 1" width="300px" height="400px">
+                    </div>
+                    <div class="product-details">
+                        <a href="jujutsu kaisen.jpg" class="animated-link"><h2>Limited Edition Jujutsu Kaisen T-shirt</h2></a>
+                        <p class="price">RM45.00</p>
+                        <p class="description">Jjk lovers, I'll wait you to buy me!!!</p>
+                        <button class="add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+            </section>
+            <h2>Special for Cosplayer</h2>
+            <section class="product-list">
+                <div class="product" data-product-id="22">
+                    <div class="product-image">
+                        <img src="gojo.jpeg" alt="Product 2" width="200px" height="300px">
+                    </div>
+                    <div class="product-details">
+                        <a href="gojo.jpeg" class="animated-link"><h2>Gojo Satoru outfit</h2></a>
+                        <p class="price">RM69.00</p>
+                        <p class="description">"Hehehehe, don't worry because you're weak"</p>
+                        <button class="add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product" data-product-id="23">
+                    <div class="product-image">
+                        <img src="jjk sorcecer.jpeg" alt="Product 3" width="200px" height="300px">
+                    </div>
+                    <div class="product-details">
+                        <a href="jjk sorcecer.jpeg" class="animated-link"><h2>Special jujutsu sorcecer outfit</h2></a>
+                        <p class="price">RM69.00</p>
+                        <p class="description">Lets become jjk sorcecer!!!</p>
+                        <button class="add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product" data-product-id="24">
+                    <div class="product-image">
+                        <img src="sukuna.jpeg" alt="Product 4" width="200px" height="300px">
+                    </div>
+                    <div class="product-details">
+                        <a href="sukuna.jpeg" class="animated-link"><h2>Ryomen Sukuna outfit</h2></a>
+                        <p class="price">RM75.00</p>
+                        <p class="description">"Domain Expansion, Malevolent Shrine"</p>
+                        <button class="add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product" data-product-id="25">
+                    <div class="product-image">
+                        <img src="yuji.jpeg" alt="Product 5" width="200px" height="300px">
+                    </div>
+                    <div class="product-details">
+                        <a href="yuji.jpeg" class="animated-link"><h2>Yuji Itadori outfit</h2></a>
+                        <p class="price">RM69.00</p>
+                        <p class="description">"I'm Yuji Itadori! I'm into girls like Jennifer Lawrence"</p>
+                        <button class="add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+            </section>
+            
+            <aside class="cart">
+                <h2>Shopping Cart</h2>
+                <ul id="cart-items"></ul>
+                <p id="cart-total">Total: RM0.00</p>
+                <a href="checkout.html" class="checkout-button">Checkout</a>
+                <button id="clear-cart" class="clear-cart-button">Clear Cart</button>
+            </aside>
+            
+            <img src="chibi2.png" alt="picture of gojo" height="200px" width="200px" align="right" class="moving">
+        </main>
+        
+        <footer>
+            Copyright &copy; 2024 Too-Shirty<br>
+            <a href="mailto:LimJianXian@gmail.com">Lim Jian Xian Email Address</a><br>
+            <a href="tel:012-3456789">Lim Jian Xian Phone number</a>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Function to toggle play/pause for the audio element
+        const audio = document.getElementById('audioPlayer');
+        function togglePlay() {
+            if (audio.paused) {
+                audio.play();
+            } else {
+                audio.pause();
+            }
+        }
+
+        // Slide show logic
+        let slideIndex = 0;
+        function showSlides() {
+            let slides = document.getElementsByClassName("slide");
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";  
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) {slideIndex = 1}    
+            slides[slideIndex-1].style.display = "block";  
+            setTimeout(showSlides, 2000); // Change slide every 2 seconds
+        }
+
+        // Preloader logic
+        window.addEventListener('load', () => {
+            const preloader = document.querySelector('.preloader');
+            preloader.classList.add('hidden');
+            showSlides();
+        });
+            document.addEventListener('DOMContentLoaded', () => {
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const cartItemsElement = document.getElementById('cart-items');
+        const cartTotalElement = document.getElementById('cart-total');
+    
+        function updateCartDisplay() {
+            cartItemsElement.innerHTML = '';
+            let total = 0;
+    
+            cart.forEach(item => {
+                const itemElement = document.createElement('li');
+                itemElement.innerText = `${item.name} - RM${item.price} x ${item.quantity}`;
+                cartItemsElement.appendChild(itemElement);
+                total += item.price * item.quantity;
+            });
+    
+            cartTotalElement.innerText = `Total: RM${total.toFixed(2)}`;
+        }
+    
+        function addToCart(productId, productName, productPrice) {
+            const existingProduct = cart.find(item => item.id === productId);
+            if (existingProduct) {
+                existingProduct.quantity += 1;
+            } else {
+                cart.push({
+                    id: productId,
+                    name: productName,
+                    price: productPrice,
+                    quantity: 1
+                });
+            }
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartDisplay();
+        }
+    
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', function() {
+                const productElement = this.closest('.product');
+                const productId = productElement.dataset.productId;
+                const productName = productElement.querySelector('h2').innerText;
+                const productPrice = parseFloat(productElement.querySelector('.price').innerText.replace('RM', ''));
+    
+                addToCart(productId, productName, productPrice);
+            });
+        });
+        });
+        function clearCart() {
+    localStorage.removeItem('cart'); // Clear the cart from localStorage
+    cart.length = 0; // Empty the cart array
+    updateCartDisplay(); // Update the cart display
+    }
+
+// Event listener for the Clear Cart button
+document.getElementById('clear-cart').addEventListener('click', clearCart);
+    </script>
+</body>
+</html>

@@ -1,0 +1,369 @@
+/* Basic Reset and Box Model */
+* {
+  box-sizing: border-box;
+}
+
+#background-video{
+    position: fixed; /* Ensures the video stays in place */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the video covers the whole screen */
+    z-index: -1; /* Puts the video behind the content */
+}
+
+/* General Body Styles */
+body {
+  background-color: aquamarine;
+  color: #221811;
+  font-family: Verdana, Arial, sans-serif;
+  background-image: url(images/background2.jpg);
+  overflow: auto; /* Ensure scrolling is enabled */
+  margin: 0;
+  padding: 0;
+}
+
+/* Header Styles */
+header {
+  background-color: azure;
+  height: 150px; /* Set the height to 150px */
+  background-repeat: no-repeat; /* Prevent the background image from repeating */
+  background-size: cover; /* Ensure the background image covers the header area */
+}
+
+header a {
+  text-decoration: wavy;
+}
+
+header a:visited {
+  color: coral;
+}
+
+h1 {
+  padding-top: 45px;
+  padding-left: 220px;
+  font-size: 3em;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+h1:hover {
+  color: #ff6347;
+  transform: scale(1.05);
+}
+
+@keyframes slideIn {
+  from { transform: translateX(-100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+h1 {
+  animation: slideIn 1s ease-out;
+}
+
+.gif-image {
+  width: 300px; /* or any other size you need */
+  height: auto; /* maintains aspect ratio */
+}
+
+/* Navigation Styles */
+nav {
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.5em;
+  transition: color 0.3s ease, transform 0.3s ease;
+  transform: scale(1.05);
+}
+
+nav a {
+  text-decoration: none;
+}
+
+nav a:link {
+  color: cornflowerblue;
+}
+
+nav a:visited {
+  color: blueviolet;
+}
+
+nav a:hover {
+  color: gold;
+}
+
+/* Wrapper Styles */
+#wrapper {
+  width: 80%;
+  margin-right: auto;
+  margin-left: auto;
+  background-color: honeydew;
+  min-width: 900px;
+  max-width: 1280px;
+  min-height: 100vh; /* Ensure the wrapper covers the viewport height */
+  display: flex;
+  flex-direction: column; /* Ensure children are stacked vertically */
+}
+
+/* Main Content Styles */
+main {
+  padding: 0em 2em 2em 2em;
+  flex: 1; /* Allows main content to expand and push footer down */
+}
+
+/* Footer Styles */
+footer {
+  background-color: darkgray;
+  font-size: 1em;
+  font-style: italic;
+  text-align: center;
+  margin-top: auto; /* Pushes footer to the bottom */
+}
+
+/* Table Styles */
+table {
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  border-spacing: 0;
+  background-color: lemonchiffon;
+}
+
+td, th {
+  padding: 10px;
+}
+
+tr:nth-of-type(odd) {
+  background-color: rosybrown;
+}
+
+/* Video Intro and Overlay Styles */
+#video-intro {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden; /* Prevents scrolling in the video intro area */
+  z-index: 1; /* Place above the main content */
+}
+
+#intro-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+#overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay */
+  color: white;
+  text-align: center;
+  z-index: 2; /* Above the video */
+}
+
+#enter-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Show main content and hide video intro when the target is active */
+#main-content {
+  display: none; /* Initially hidden */
+  position: relative;
+  z-index: 0; /* Behind the video intro */
+  padding: 20px;
+}
+
+#main-content:target {
+  display: block; /* Show the main content */
+}
+
+#video-intro:target {
+  opacity: 0; /* Fade out the video intro */
+  pointer-events: none; /* Prevent interaction */
+}
+
+/* Animated Links */
+a {
+  text-decoration: none;
+  color: #3498db;
+  font-size: 18px;
+  transition: color 0.3s, transform 0.3s; /* Smooth transitions */
+}
+a:visited {
+  color: blueviolet;
+}
+
+.animated-link {
+  display: inline-block; /* Allows transformation */
+}
+
+.animated-link:hover {
+  color: #e74c3c; /* Change color on hover */
+  transform: scale(1.1); /* Scale up slightly on hover */
+  animation: pulse 1s infinite; /* Add pulse animation */
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+}
+
+/* Rotating Images */
+img.rotate {
+  display: block; /* Ensure the image is block-level */
+  margin: 0 auto; /* Center it horizontally */
+  transform: rotate(25deg);
+  transition: transform 0.5s; /* Smooth transition */
+}
+
+/* Moving Images */
+@keyframes move {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(100px); }
+}
+
+img.moving {
+  animation: move 2s ease-in-out infinite; /* Duration, timing function, iteration count */
+}
+
+/* Hidden Audio */
+audio {
+  display: none;
+}
+
+/* Custom Play Button */
+.play-button {
+  background-color: #01030600;
+  color: rgba(26, 25, 25, 0);
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+}
+
+/* Product Listing Styles */
+.product-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  margin: 0 auto;
+  background-color: honeydew; /* Match with wrapper background */
+}
+
+.product-item {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-item img {
+  width: 100%;
+  height: auto;
+  border-bottom: 1px solid #ddd;
+}
+
+.product-item h2 {
+  font-size: 1.5em;
+  margin: 10px 0;
+  color: #221811; /* Match with body text color */
+}
+
+.product-item .price {
+  font-size: 1.25em;
+  color: #e74c3c;
+  margin: 10px 0;
+}
+
+.product-item p {
+  padding: 0 10px;
+  color: #555; /* A lighter color for description */
+}
+
+.product-item:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+/* CSS for slide show */
+.slideshow-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 1000; /* Make sure it's on top of other content */
+}
+
+.slide {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.fade {
+  animation: fade 1.5s ease-in-out;
+}
+
+@keyframes fade {
+  0% { opacity: 1; }
+  20% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+/* CSS for preloader */
+.preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  z-index: 1000; /* Ensure it covers the entire page */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.preloader.hidden {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 1s ease, visibility 1s ease;
+}

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Too-Shirty</title>
+    <link rel="stylesheet" href="Too-Shirty.css">
+</head>
+<body>
+    <div id="wrapper">
+        <header>
+            <a href="index.html">
+                <h1><img src="Logo.jpg" alt="Company Logo" height="100px" width="120px" align="left">Too-Shirty</h1>
+            </a>
+        </header>
+        <main>
+        <section class="checkout-section">
+            <h2>Checkout</h2>
+            <div id="cart-items"></div>
+            <div id="cart-total"></div>
+            <form id="payment-form">
+                <h2>Payment Details</h2>
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="address">Address:</label>
+                    <input type="text" id="address" name="address" required>
+                </div>
+                <div class="form-group">
+                    <label for="card-number">Credit Card Number:</label>
+                    <input type="text" id="card-number" name="card-number" required>
+                </div>
+                <div class="form-group">
+                    <label for="expiry-date">Expiry Date:</label>
+                    <input type="text" id="expiry-date" name="expiry-date" required>
+                </div>
+                <div class="form-group">
+                    <label for="cvv">CVV:</label>
+                    <input type="text" id="cvv" name="cvv" required>
+                </div>
+                <button type="submit">Pay Now</button>
+            </form>
+            <p id="message"></p>
+        </section>
+    </main>
+    </div>
+
+    <script src="checkout.js"></script>
+    <script>document.addEventListener('DOMContentLoaded', () => {
+        const cartItemsElement = document.getElementById('cart-items');
+        const cartTotalElement = document.getElementById('cart-total');
+        const paymentForm = document.getElementById('payment-form');
+        const messageElement = document.getElementById('message');
+    
+        // Load cart from localStorage
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    
+        if (cart.length === 0) {
+            cartItemsElement.innerHTML = '<p>Your cart is empty.</p>';
+            cartTotalElement.innerHTML = '';
+            paymentForm.style.display = 'none'; // Hide payment form if cart is empty
+            return;
+        }
+    
+        // Display cart items
+        let total = 0;
+        cartItemsElement.innerHTML = '<h2>Items in your cart:</h2>';
+        cart.forEach(item => {
+            const itemElement = document.createElement('div');
+            itemElement.innerHTML = `<p>${item.name} - RM${item.price} x ${item.quantity}</p>`;
+            cartItemsElement.appendChild(itemElement);
+            total += item.price * item.quantity;
+        });
+    
+        // Display total
+        cartTotalElement.innerHTML = `<h2>Total: RM${total.toFixed(2)}</h2>`;
+    
+        // Handle payment form submission
+        paymentForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+    
+            // Retrieve payment details
+            const name = document.getElementById('name').value;
+            const address = document.getElementById('address').value;
+            const cardNumber = document.getElementById('card-number').value;
+            const expiryDate = document.getElementById('expiry-date').value;
+            const cvv = document.getElementById('cvv').value;
+    
+            // Basic validation (in a real application, you'd validate and process payment here)
+            if (!name || !address || !cardNumber || !expiryDate || !cvv) {
+                messageElement.textContent = 'Please fill in all fields.';
+                return;
+            }
+    
+            // Simulate payment processing
+            messageElement.textContent = 'Payment successful! Thank you for your purchase.';
+    
+            // Clear the cart
+            localStorage.removeItem('cart');
+            cartItemsElement.innerHTML = '<p>Your cart is empty.</p>';
+            cartTotalElement.innerHTML = '';
+            paymentForm.style.display = 'none'; // Hide payment form after successful payment
+        });
+    });
+    </script>    
+</body>
+</html>

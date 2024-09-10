@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Too-Shirty</title>
+  <link rel="stylesheet" href="Too-Shirty.css">
+</head>
+<body>
+  <div id="video-intro">
+    <video autoplay muted playsinline id="intro-video">
+      <source src="jjkopening.mp4.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <div id="overlay">
+      <img src="Logo.png" alt="Logo" height="300px" width="auto" align="right">
+      <a href="index.html" id="enter-button"><h1>Welcome Too-Shirty</h1></a>
+      <audio id="audioPlayer" autoplay>
+        <source src="jjk music.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+    <button class="play-button" onclick="togglePlay()"><img src="jjk big 3.png" alt="big three" width="400px" height="400px"></button>
+
+    <script>
+        const audio = document.getElementById('audioPlayer');
+
+        function togglePlay() {
+            if (audio.paused) {
+                audio.play();
+            } else {
+                audio.pause();
+            }
+        }
+    </script>
+
+    </div>
+  </div>
+</body>
+</html>

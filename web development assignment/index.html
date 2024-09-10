@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Too-shirty</title>
+        <link rel="stylesheet" href="Too-Shirty.css">
+    </head>
+    <body>
+        <div id="wrapper">
+        <header>
+
+                <a href="index.html">
+                    <h1><img src="Logo.jpg" alt="Company Logo" height="100px" width="120px" align="left">Too-Shirty</h1>
+                </a>
+                      
+        </header>
+        <div>
+            <nav>
+                <a href="index.html"class="animated-link">Home</a>
+                <a href="Men.html"class="animated-link">Men</a>
+                <a href="Women.html"class="animated-link">Women</a>
+                <a href="Children.html"class="animated-link">Children</a>
+                <a href="Limited Edition.html"class="animated-link">Limited Edition</a>
+            </nav>
+        </div>
+
+        <main>
+            
+            <h2>Welcome to the the base of Too-Shirty</h2>
+            <p>We hope we can crank your fashion style to the max!!!</p>
+            <h3>30% Discounts for every purchase over RM100</h3>
+            <div>
+                <img src="home.jpeg" alt="picture of men" height="200px" width="auto" align="right">
+            </div>
+            &nbsp;&nbsp;&nbsp;
+            
+            <div>
+                <img src="discount.png" alt="picture of discount" height="100px" width="auto" align="right">
+            </div>
+            &nbsp;&nbsp;&nbsp;
+            
+            <button id="play-button">Play Music</button>
+            <audio id="background-music" src="shopmusic.mp3" loop>
+                Your browser does not support the audio element.
+            </audio>
+            <script>
+                document.getElementById('play-button').addEventListener('click', () => {
+                    const audio = document.getElementById('background-music');
+                    audio.play();
+                });
+            </script>
+
+        
+            <h4>Jujutsu Kaisen events START NOWWW!!!</h4>
+            <p>
+                <li>(Available on 1st AUG 2024-14th AUG 2024)</li>
+                Dont forget to pre-order for our JJK LIMITED-EDITION clothes!
+                You can visit here --><a href="Limited Edition.html"class="animated-link">Limited Edition</a>
+
+            </p>
+       
+            
+              
+        <div>
+            53001 Jalan Jambu Manis<br>
+            Ara Damansara, Selengor<br>
+        </div>
+        </main>
+        <br>
+        <footer>
+            Copyright &copy; 2024 Too-Shirty<br>
+            <a href="LimJianXian@gmail.com">Lim Jian Xian Email Address</a><br>
+            <a href="012-3456789">Lim Jian Xian Phone number</a>
+        </footer>
+        </div>
+    </body>
+</html>

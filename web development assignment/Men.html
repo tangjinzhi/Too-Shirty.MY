@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+
+        <title>Too-shirty</title>
+        <link rel="stylesheet" href="Too-Shirty.css">
+    </head>
+    <body>
+        <div id="wrapper">
+        <header>
+                <a href="index.html">
+                    <h1><img src="Logo.jpg" alt="Company Logo" height="100px" width="120px" align="left">Too-Shirty</h1>
+
+                </a>
+        </header>
+        <nav>
+            <a href="index.html"class="animated-link">Home</a>
+            <a href="Men.html"class="animated-link">Men</a>
+            <a href="Women.html"class="animated-link">Women</a>
+            <a href="Children.html"class="animated-link">Children</a>
+            <a href="Limited Edition.html"class="animated-link">Limited Edition</a>
+        </nav>
+        <main>
+            <img src="images/Sigma.jpg" alt="picture of a sigma male" height="250px" width="auto" align="right">
+            <h2>The Manliest T-shirts</h2>
+            <p>We have T-shirts that makes you into a Sigma male</p>
+            <table>
+                <tr>
+                    <th>S size</th>
+                    <td>Chest size = 106cm</td>
+                </tr>
+                <tr>
+                    <th>M size</th>
+                    <td>Chest size = 110cm</td>
+                </tr>
+                <tr>
+                    <th>L size</th>
+                    <td>Chest size = 114cm</td>
+                </tr>
+            </table>
+            <section class="product-list">
+                <div class="product" data-product-id="1">
+                    <div class="product-image">
+                        <img src="menshirt2.jpg" alt="Product 1" width="300px" height="300px">
+                    </div>
+                    <div class="product-details">
+                        <a href="menshirt2.jpg"class="animated-link"><h2>Long Sleeve T-shirt</h2></a>
+                        <p class="price">RM30.00</p>
+                        <p class="description">Cozy & comfy ~</p>
+                        <button class="add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product" data-product-id="2">
+                    <div class="product-image">
+                        <img src="menshirt3.jpg" alt="Product 2" width="300px" height="300px">
+                    </div>
+                    <div class="product-details">
+                        <a href="menshirt3.jpg"class="animated-link"><h2>Airism Standard T-shirt</h2></a>
+                        <p class="price">RM20.00</p>
+                        <p class="description">Fitness hero's best suit</p>
+                        <button class="add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product" data-product-id="3">
+                    <div class="product-image">
+                        <img src="menshirt.jpg" alt="Product 3" width="300px" height="300px">
+                    </div>
+                    <div class="product-details">
+                        <a href="menshirt.jpg"class="animated-link"><h2>100% Cotton T-shirt</h2></a>
+                        <p class="price">RM25.00</p>
+                        <p class="description">feels the texture of softness</p>
+                        <button class="add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product" data-product-id="4">
+                    <div class="product-image">
+                        <img src="menshirt4.webp" alt="Product 4" width="250px" height="300px">
+                    </div>
+                    <div class="product-details">
+                        <a href="menshirt4.webp"class="animated-link"><h2>Long Sleeve Black T-shirt</h2></a>
+                        <p class="price">RM35.00</p>
+                        <p class="description">Looks like a wizard when wearing on it</p>
+                        <button class="add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product" data-product-id="5">
+                    <div class="product-image">
+                        <img src="menshirt5.jpg" alt="Product 5" width="250px" height="350px">
+                    </div>
+                    <div class="product-details">
+                        <a href="menshirt5.jpg"class="animated-link"><h2>Short Sleeve T-shirt with pocket</h2></a>
+                        <p class="price">RM25.00</p>
+                        <p class="description">Experience the simple of life</p>
+                        <button class="add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+            </section>
+            
+            <aside class="cart">
+                <h2>Shopping Cart</h2>
+                <ul id="cart-items"></ul>
+                <p id="cart-total">Total: RM0.00</p>
+                <a href="checkout.html" class="checkout-button">Checkout</a>
+            </aside>
+        </main>
+    
+        <script src="script.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const cartItemsElement = document.getElementById('cart-items');
+        const cartTotalElement = document.getElementById('cart-total');
+    
+        function updateCartDisplay() {
+            cartItemsElement.innerHTML = '';
+            let total = 0;
+    
+            cart.forEach(item => {
+                const itemElement = document.createElement('li');
+                itemElement.innerText = `${item.name} - RM${item.price} x ${item.quantity}`;
+                cartItemsElement.appendChild(itemElement);
+                total += item.price * item.quantity;
+            });
+    
+            cartTotalElement.innerText = `Total: RM${total.toFixed(2)}`;
+        }
+    
+        function addToCart(productId, productName, productPrice) {
+            const existingProduct = cart.find(item => item.id === productId);
+            if (existingProduct) {
+                existingProduct.quantity += 1;
+            } else {
+                cart.push({
+                    id: productId,
+                    name: productName,
+                    price: productPrice,
+                    quantity: 1
+                });
+            }
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartDisplay();
+        }
+    
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', function() {
+                const productElement = this.closest('.product');
+                const productId = productElement.dataset.productId;
+                const productName = productElement.querySelector('h2').innerText;
+                const productPrice = parseFloat(productElement.querySelector('.price').innerText.replace('', ''));
+    
+                addToCart(productId, productName, productPrice);
+            });
+        });
+    
+        updateCartDisplay();
+    });
+        </script>
+        </main>
+        <br>
+        <footer>
+            Copyright &copy; 2024 Too-Shirty<br>
+            <a href="LimJianXian@gmail.com">Lim Jian Xian Email Address</a><br>
+            <a href="012-3456789">Lim Jian Xian Phone number</a>
+        </footer>
+        </div>
+    </body>
+</html>
